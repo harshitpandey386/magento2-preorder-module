@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="harshit_preorder" resource="default" engine="innodb" comment="Pre-Order Requests">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="first_name" nullable="false" length="255" comment="First Name"/>
+        <column xsi:type="varchar" name="last_name" nullable="true" length="255" comment="Last Name"/>
+        <column xsi:type="varchar" name="mobile" nullable="false" length="32" comment="Mobile Number"/>
+        <column xsi:type="varchar" name="location" nullable="false" length="255" comment="Location"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Product ID"/>
+        <column xsi:type="varchar" name="product_name" nullable="false" length="255" comment="Product Name Snapshot"/>
+        <column xsi:type="varchar" name="product_sku" nullable="false" length="255" comment="Product SKU Snapshot"/>
+        <column xsi:type="datetime" name="submitted_at" nullable="true" comment="Submitted At"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="HARSHIT_PREORDER_PRODUCT_ID" indexType="btree">
+            <column name="product_id"/>
+        </index>
+    </table>
+</schema>

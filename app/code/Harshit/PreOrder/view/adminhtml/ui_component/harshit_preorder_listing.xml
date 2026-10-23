@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array"><item name="provider" xsi:type="string">harshit_preorder_listing.harshit_preorder_listing_data_source</item></item>
+    </argument>
+    <settings>
+        <spinner>harshit_preorder_columns</spinner>
+        <deps><dep>harshit_preorder_listing.harshit_preorder_listing_data_source</dep></deps>
+    </settings>
+    <dataSource name="harshit_preorder_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig><param name="indexField" xsi:type="string">entity_id</param></storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Harshit_PreOrder::preorders</aclResource>
+        <dataProvider class="HarshitPreOrderListingDataProvider" name="harshit_preorder_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <exportButton name="export_button"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="harshit_preorder_columns">
+        <column name="entity_id"><settings><filter>textRange</filter><label translate="true">ID</label><sorting>desc</sorting></settings></column>
+        <column name="first_name"><settings><filter>text</filter><label translate="true">First Name</label></settings></column>
+        <column name="last_name"><settings><filter>text</filter><label translate="true">Last Name</label></settings></column>
+        <column name="mobile"><settings><filter>text</filter><label translate="true">Mobile</label></settings></column>
+        <column name="location"><settings><filter>text</filter><label translate="true">Location</label></settings></column>
+        <column name="product_id"><settings><filter>textRange</filter><label translate="true">Product ID</label></settings></column>
+        <column name="product_sku"><settings><filter>text</filter><label translate="true">Product SKU</label></settings></column>
+        <column name="product_name"><settings><filter>text</filter><label translate="true">Product Name</label></settings></column>
+        <column name="submitted_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date"><settings><filter>dateRange</filter><dataType>date</dataType><label translate="true">Submitted At</label></settings></column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date"><settings><filter>dateRange</filter><dataType>date</dataType><label translate="true">Created At</label></settings></column>
+        <column name="product_link" class="Harshit\PreOrder\Ui\Component\Listing\Column\ProductLink">
+            <settings><label translate="true">Product</label><bodyTmpl>ui/grid/cells/html</bodyTmpl><sortable>false</sortable></settings>
+        </column>
+    </columns>
+</listing>

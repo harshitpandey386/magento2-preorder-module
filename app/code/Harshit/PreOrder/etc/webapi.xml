@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module-webapi/etc/webapi.xsd">
+    <route url="/V1/preorders" method="GET">
+        <service class="Harshit\PreOrder\Api\PreOrderManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Harshit_PreOrder::preorders"/>
+        </resources>
+    </route>
+    <route url="/V1/preorders/:entityId" method="GET">
+        <service class="Harshit\PreOrder\Api\PreOrderRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Harshit_PreOrder::preorders"/>
+        </resources>
+    </route>
+</routes>

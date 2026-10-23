@@ -1,0 +1,19 @@
+{
+    "name": "harshit/module-pre-order",
+    "description": "Standalone Magento 2 preorder request module",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": ["OSL-3.0", "AFL-3.0"],
+    "require": {
+        "php": "~8.2.0||~8.3.0||~8.4.0",
+        "magento/framework": "*",
+        "magento/module-backend": "*",
+        "magento/module-catalog": "*",
+        "magento/module-ui": "*",
+        "magento/module-webapi": "*"
+    },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {"Harshit\\PreOrder\\": ""}
+    }
+}

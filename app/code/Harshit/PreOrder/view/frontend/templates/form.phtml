@@ -1,0 +1,42 @@
+<?php
+declare(strict_types=1);
+
+/** @var \Magento\Catalog\Block\Product\View $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$product = $block->getProduct();
+if (!$product || !$product->getId()) {
+    return;
+}
+?>
+<div class="preorder-form-wrapper">
+    <form class="form preorder-form"
+          action="<?= $escaper->escapeUrl($block->getUrl('preorder/index/save')) ?>"
+          method="post"
+          id="harshit-preorder-form"
+          data-mage-init='{"validation": {}, "Harshit_PreOrder/js/submitted-at": {}}'>
+        <?= $block->getBlockHtml('formkey') ?>
+        <input type="hidden" name="product_id" value="<?= $escaper->escapeHtmlAttr((string) (int) $product->getId()) ?>" />
+        <input type="hidden" name="submitted_at" value="" />
+
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?= $escaper->escapeHtml(__('Pre-Order This Product')) ?></span></legend>
+            <div class="field required">
+                <label class="label" for="preorder-first-name"><span><?= $escaper->escapeHtml(__('First Name')) ?></span></label>
+                <div class="control"><input id="preorder-first-name" name="first_name" type="text" class="input-text" data-validate='{"required-entry":true}' /></div>
+            </div>
+            <div class="field">
+                <label class="label" for="preorder-last-name"><span><?= $escaper->escapeHtml(__('Last Name')) ?></span></label>
+                <div class="control"><input id="preorder-last-name" name="last_name" type="text" class="input-text" /></div>
+            </div>
+            <div class="field required">
+                <label class="label" for="preorder-mobile"><span><?= $escaper->escapeHtml(__('Mobile Number')) ?></span></label>
+                <div class="control"><input id="preorder-mobile" name="mobile" type="text" inputmode="numeric" class="input-text" data-validate='{"required-entry":true,"validate-digits":true}' /></div>
+            </div>
+            <div class="field required">
+                <label class="label" for="preorder-location"><span><?= $escaper->escapeHtml(__('Location')) ?></span></label>
+                <div class="control"><input id="preorder-location" name="location" type="text" class="input-text" data-validate='{"required-entry":true}' /></div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar"><div class="primary"><button type="submit" class="action primary"><span><?= $escaper->escapeHtml(__('Submit Pre-Order')) ?></span></button></div></div>
+    </form>
+</div>
